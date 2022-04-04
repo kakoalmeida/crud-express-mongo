@@ -1,0 +1,29 @@
+<%- include('header.ejs') %>
+
+  <h1>
+    <%= title %>
+  </h1>
+  <a class="item btn" href="/new">Registrar nova atividade</a>
+  <div class="container">
+    <ul>
+
+      <% todo.forEach(function(task) { %>
+        <div class="itens">
+          <li><a class="item" href="/edit/<%= task._id %>">
+              <%= task.task %>
+            </a><a class="item del-btn" href="/delete/<%= task._id %>" onclick="return confirm('Deseja excluir?');"><img
+                class="trash-icon" src="/images/trash.png" alt=""></a><a class="item del-btn" href="/delete/<%= task._id %>" onclick="return confirm('Tarefa Concluida?');"><img
+                  class="trash-icon" src="/images/done.png" alt=""></a>
+            <% todo.forEach(function(desc) { %>
+              <p>
+                <%= desc.desc %>
+              </p>
+              <% }); %>
+          </li>
+        </div>
+        <% }); %>
+
+    </ul>
+  </div>
+  </div>
+  <%- include('footer.ejs') %>
