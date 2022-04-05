@@ -14,11 +14,11 @@
             </a><a class="item del-btn" href="/delete/<%= task._id %>" onclick="return confirm('Deseja excluir?');"><img
                 class="trash-icon" src="/images/trash.png" alt=""></a><a class="item del-btn" href="/delete/<%= task._id %>" onclick="return confirm('Tarefa Concluida?');"><img
                   class="trash-icon" src="/images/done.png" alt=""></a>
-            <% todo.forEach(function(desc) { %>
+            
               <p>
-                <%= desc.desc %>
+                <%= task.desc %>
               </p>
-              <% }); %>
+              
           </li>
         </div>
         <% }); %>
