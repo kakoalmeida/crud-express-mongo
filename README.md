@@ -10,4 +10,4 @@
 ![Registrar nova atividade](sample/11.png)
 
 ### Sobre
-![Sobre](sample/12.png)
+![Sobre](sample/10.png)
