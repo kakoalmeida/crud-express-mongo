@@ -69,7 +69,7 @@ router.get('/delete/:id', async(req, res, next) => {
   }
 });
 
-router.get('/about', (req, res, next) => {  // Just for some about information GET route
+router.get('/about', (req, res, next) => {  // Just for some about information GET route default
   res.render('about', { title: "Um pouco sobre este projeto" });
 });
 

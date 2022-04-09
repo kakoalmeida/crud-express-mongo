@@ -1,6 +1,6 @@
 const mongoClient = require('mongodb').MongoClient;
 
-// Make sure to pass the Docker ip address of the database to be able to connect to it
+// Make sure to pass the Docker ip address of the database to be able to connect 
 // Change this before running the app in your device
 mongoClient.connect("mongodb://kako:1234@172.17.0.1:27017/admin").then(conn => global.conn = conn.db("app")).catch(err => console.log(err)); 
 
