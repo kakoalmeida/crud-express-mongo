@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  mongoapp:
+    image: "almeidakaue/mongodbtodo:main"  # mongo image available at
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=admin      # enviroment config
+      - MONGO_INITDB_ROOT_USERNAME=kako
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+    volumes:
+      - my-app:/data/db  # define the volume
+    ports:
+      - 27017:27017
+  app:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+volumes:
+  my-app:
+    

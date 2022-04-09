@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET default route, main page*/
 router.get('/', async(req, res, next) => {
 
   try{
@@ -12,12 +12,12 @@ router.get('/', async(req, res, next) => {
   }
 });
 
-router.get('/new', (req, res, next) => {
+router.get('/new', (req, res, next) => { // Renders the new task page
   res.render('new', { title: "Nova atividade", docs: {"task":"", "desc":"" }, action: "/new" });
 });
 
 router.post('/new', async(req, res, next) => {
-  const task = req.body.task;
+  const task = req.body.task;                   // POST route to create new tasks
   const desc = req.body.desc;
 
   try{
@@ -27,7 +27,7 @@ router.post('/new', async(req, res, next) => {
       desc = "";
       res.render('new', { title: "Nova atividade", docs: {"task":task, "desc":desc }, action: "/new" });
     } else{
-    const result = await global.db.newTask({task, desc});
+    const result = await global.db.newTask({task, desc}); // Inserts data into the database
     res.redirect('/');}
   } catch(err){
     next(err);
@@ -69,7 +69,7 @@ router.get('/delete/:id', async(req, res, next) => {
   }
 });
 
-router.get('/about', (req, res, next) => {
+router.get('/about', (req, res, next) => {  // Just for some about information GET route
   res.render('about', { title: "Um pouco sobre este projeto" });
 });
 
