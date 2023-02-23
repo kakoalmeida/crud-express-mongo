@@ -1,4 +1,4 @@
-FROM node:16.14.2
+FROM node:19.7.0-slim
 
 #Cria um diretório para a aplicação e define como local de trabalho
 RUN mkdir -p /usr/src/app

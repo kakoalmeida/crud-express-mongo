@@ -2,14 +2,14 @@ version: '3.9'
 
 services:
   mongoapp:
-    image: "almeidakaue/mongo-todo-db:latest"  # mongo image available at
-    restart: always                        # https://hub.docker.com/repository/docker/almeidakaue/mongo-todo-db
+    image: "almeidakaue/mongo-todo-db:latest"  
+    restart: always                        
     environment:
-      - MONGO_INITDB_DATABASE=admin      # enviroment config
+      - MONGO_INITDB_DATABASE=admin      
       - MONGO_INITDB_ROOT_USERNAME=kako
       - MONGO_INITDB_ROOT_PASSWORD=1234
     volumes:
-      - my-app:/data/db  # define the volume app
+      - my-app:/data/db  
     ports:
       - 27017:27017
   app:

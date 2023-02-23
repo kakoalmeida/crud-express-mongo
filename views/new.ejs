@@ -4,11 +4,10 @@
             <%= title %>
         </h2>
         <form action="<%= action %>" method="POST">
-            <label class="lab"> Tarefa <input type="text" name="task" value="<%= docs.task %>"
+            <label class="lab"> Task <input type="text" id="task" name="task" value="<%= docs.task %>"
                     class="input-task" /></label>
-            <label class="lab"> Descrição <input type="text" name="desc" maxlength="128" value="<%= docs.desc %>"
+            <label class="lab"> Description <input type="text" id="desc" name="desc" maxlength="128" value="<%= docs.desc %>"
                     class="input-desc" /></label>
             <input type="submit" value="Registrar" class="input-btn" />
         </form>
     </div>
-    <%- include('footer.ejs') %>

@@ -6,14 +6,14 @@ router.get('/', async(req, res, next) => {
 
   try{
     const todo =  await global.db.getAllTasks();
-    res.render('index', { title: "Atividades para a semana", todo});
+    res.render('index', { title: "Daily Tasks", todo});
   } catch (err){
     next(err);
   }
 });
 
 router.get('/new', (req, res, next) => { // Renders the new task page
-  res.render('new', { title: "Nova atividade", docs: {"task":"", "desc":"" }, action: "/new" });
+  res.render('new', { title: "New task", docs: {"task":"", "desc":"" }, action: "/new" });
 });
 
 router.post('/new', async(req, res, next) => {
@@ -22,10 +22,9 @@ router.post('/new', async(req, res, next) => {
 
   try{
     if(!req.body.task || typeof req.body.task == undefined || req.body.task == null){  // Checks if the task is empty
-      console.log("Por favor, preencha o campo Tarefa");                               // If it is, it will show a msg in console
       let desc = req.body.desc;                                                        // after that clean the description field and render again the page
       desc = "";
-      res.render('new', { title: "Nova atividade", docs: {"task":task, "desc":desc }, action: "/new" });
+      res.render('new', { title: "New task", docs: {"task":task, "desc":desc }, action: "/new" });
     } else{
     const result = await global.db.newTask({task, desc}); // Inserts data into the database
     res.redirect('/');}
@@ -39,7 +38,7 @@ router.get('/edit/:id', async(req, res, next) => {
 
   try{
     const docs = await global.db.getTask(id);
-    res.render('new', { title: "Editar atividade", docs, action: '/edit/' + docs._id});
+    res.render('new', { title: "Update", docs, action: '/edit/' + docs._id});
   }catch(err){
     next(err);
   }
@@ -68,10 +67,5 @@ router.get('/delete/:id', async(req, res, next) => {
     next(err);
   }
 });
-
-router.get('/about', (req, res, next) => {  // Just for some about information GET route default
-  res.render('about', { title: "Um pouco sobre este projeto" });
-});
-
 
 module.exports = router;
